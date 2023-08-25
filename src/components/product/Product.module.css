@@ -17,6 +17,8 @@
 }
 .product img{
     max-width: 100%;
+    height: 250px;
+    object-fit: contain;
 }
 .product h3{
     margin-bottom: 0px;

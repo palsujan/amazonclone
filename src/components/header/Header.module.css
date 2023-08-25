@@ -75,6 +75,25 @@
     color: #fff;
     margin: 0 10px;
 }
+.header_optionBasket a{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration:none;
+}
+.header_optionBasket a span{
+    margin-top: -20px;
+    /* color: #f08804; */
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    font-weight:bold;
+}
 .header_bottom uli li img{
     width: 250px;
 }

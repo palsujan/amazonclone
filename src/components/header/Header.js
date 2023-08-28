@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import Styles from './Header.module.css';
+import Styles from './Header.module.scss';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from 'react-router-dom';

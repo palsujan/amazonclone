@@ -1,11 +1,11 @@
 import React from 'react';
-import classNames from 'classnames';
 import Styles from './Header.module.scss';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({cart}) => {
+    console.log("Header_props", cart);
   return (
     <>
         <div className={Styles.header}>
@@ -33,7 +33,8 @@ const Header = () => {
                     <Link to="/cart">
                     <ShoppingCartIcon/>
                     <span>
-                        2
+                        {cart?.total_items}
+                        {console.log(cart?.total_items)}
                     </span>
                     </Link>
                 </div>

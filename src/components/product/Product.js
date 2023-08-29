@@ -1,11 +1,9 @@
 import React from 'react';
 import Styles from './Product.module.scss';
 
-const Product = ({productList}) => {
-    console.log("ProdusctList", productList);
-    // productList?.map((item) => {
-    //        return console.log("Product", item);
-    // })
+const Product = ({productList, addToCart}) => {
+    // console.log("ProdusctList", productList);
+    console.log("addToCart", addToCart);
   return (
     <div className={Styles.productWrap}>
         {
@@ -15,7 +13,7 @@ const Product = ({productList}) => {
                     <img src={item?.image?.url}/>
                     <h3>{item.name}</h3>
                     <p>{item?.price?.formatted_with_symbol}</p>
-                    <button>Add to Cart</button>
+                    <button onClick={()=>addToCart(item.id, 1)}>Add to Cart</button>
                 </div>
             })
         }

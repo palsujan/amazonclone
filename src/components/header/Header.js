@@ -4,7 +4,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from 'react-router-dom';
 
-const Header = ({cart}) => {
+const Header = ({cart, categoryList}) => {
     console.log("Header_props", cart);
   return (
     <>
@@ -41,13 +41,17 @@ const Header = ({cart}) => {
             </div>
         </div>
         <div className={Styles.header_bottom}>
-            <ul>
-                <li>All</li>
-                <li>Mobile</li>
-                <li>Category</li>
-                <li>Computer</li>
-                <li>Cloth</li>
-                <li>Electronics</li>
+            <ul> 
+                {
+                    categoryList?.map(category=>{
+                        return <li key={category.id}>
+                            <Link to = {`category/${category.slug}`}>
+                                {category.name}
+                            </Link>
+                        </li>
+                    })
+                }
+                
                 <li>
                     <img src='https://m.media-amazon.com/images/G/31/prime/ACQ/Homepage_DesktopSWM_400x39._CB593034217_.jpg'/>
                 </li>

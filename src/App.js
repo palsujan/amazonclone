@@ -12,11 +12,21 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [productList, setProductList] = useState([]);
-  const [cart, setCart] = useState()
+  const [productListByCategory, setProductListByCategory] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
+  const [cart, setCart] = useState();
+
 
   const fetchProducts = async()=>{
-    const response = await commerce.products.list([]);
+    const response = await commerce.products.list();
     setProductList(response.data)
+  }
+
+  const fetchProductsByCategory = async(category)=>{
+    const response = await commerce.products.list({
+      category_slug:[category]
+    });
+    setProductListByCategory(response.data)
   }
 
   const addToCart = async(productId, qty)=>{
@@ -32,9 +42,15 @@ const removeFromCart =async(productId) =>{
   const response = await commerce.cart.remove(productId);
   setCart(response.cart)
 }
+
+const fetchCategories = async()=>{
+  const response = await commerce.categories.list();
+  setCategoryList(response.data);
+}
   useEffect(() => {
     fetchProducts();
     fetchCart();
+    fetchCategories();
   }, [])
 
 
@@ -42,13 +58,14 @@ const removeFromCart =async(productId) =>{
   return (
     <Router>
       <div className="App">
-        <Header cart={cart}/>
+        <Header cart={cart} categoryList={categoryList}/>
         <Banner/>
         <Routes>
           <Route exact path="/" 
             element={<Product productList = {productList} addToCart = {addToCart}/>}>
           </Route>
-          <Route exact path="/cart" element={<ShoppingCart cart={cart} removeFromCart={removeFromCart}/>}></Route>
+          <Route  path="/cart" element={<ShoppingCart cart={cart} removeFromCart={removeFromCart}/>}></Route>
+          <Route  path="/category/:slug" element={<Product productList = {productListByCategory} fetchProductsByCategory={fetchProductsByCategory} addToCart = {addToCart}/>}></Route>
         </Routes>
       </div>
     </Router> 

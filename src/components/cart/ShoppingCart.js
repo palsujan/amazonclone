@@ -1,8 +1,15 @@
 import React from 'react';
 import Styles from './ShoppingCart.module.css';
+import { useNavigate } from 'react-router';
 
 const ShoppingCart = ({cart, removeFromCart}) => {
-    console.log("ShoppingCart", cart)
+    const navigate = useNavigate();
+    // console.log("ShoppingCart", cart)
+
+    const handleClick = () => {
+        // 👇️ replace set to true
+        navigate('/checkout', {replace: true});
+      };
   return (
     <div className={Styles.checkout}>
                 <div className={Styles.checkout_left}>
@@ -25,13 +32,14 @@ const ShoppingCart = ({cart, removeFromCart}) => {
             
 
         </div>
+        
         <div className={Styles.checkout_right}>
             <div className={Styles.subtotal}>
                 <p>Subtotal ({cart?.total_items}) : <strong>{cart?.subtotal?.formatted_with_symbol}</strong></p>
                 <small className={Styles.subtotal_gift}>
                     <input type='checkbox'/> This order contains a gift
                 </small>
-                <button>Proceed to Checkout</button>
+                <button onClick={handleClick}>Proceed to Checkout</button>
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ import { BrowserRouter as Router,
 import ShoppingCart from "./components/cart/ShoppingCart";
 import commerce from "./lib/commerce";
 import { useState, useEffect } from "react";
+import Checkout from "./components/checkout/Checkout";
 
 function App() {
   const [productList, setProductList] = useState([]);
@@ -66,6 +67,7 @@ const fetchCategories = async()=>{
           </Route>
           <Route  path="/cart" element={<ShoppingCart cart={cart} removeFromCart={removeFromCart}/>}></Route>
           <Route  path="/category/:slug" element={<Product productList = {productListByCategory} fetchProductsByCategory={fetchProductsByCategory} addToCart = {addToCart}/>}></Route>
+          <Route  path="/checkout" element={<Checkout cart={cart} removeFromCart={removeFromCart}/>}></Route>
         </Routes>
       </div>
     </Router> 

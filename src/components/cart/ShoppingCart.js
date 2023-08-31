@@ -46,4 +46,4 @@ const ShoppingCart = ({cart, removeFromCart}) => {
   )
 }
 
-export default ShoppingCart
+export default ShoppingCart;

@@ -68,7 +68,7 @@ const fetchCategories = async()=>{
           </Route>
           <Route  path="/cart" element={<ShoppingCart cart={cart} removeFromCart={removeFromCart}/>}></Route>
           <Route  path="/category/:slug" element={<Product productList = {productListByCategory} fetchProductsByCategory={fetchProductsByCategory} addToCart = {addToCart}/>}></Route>
-          <Route  path="/checkout" element={<Checkout/>}></Route>
+          <Route  path="/checkout" element={<Checkout cart={cart}/>}></Route>
           <Route  path="/thanks" element={<Thanks/>}></Route>
         </Routes>
       </div>
